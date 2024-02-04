@@ -44,11 +44,12 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier){
-    if(identifier == 'filters'){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const FilterScreen(),));
-    }else{
-      Navigator.of(context).pop();
+  void _setScreen(String identifier) {
+    Navigator.of(context).pop();
+    if (identifier == 'filters') {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const FilterScreen(),
+      ));
     }
   }
 
@@ -71,7 +72,9 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
-      drawer: MainDrawer(onSelectScreen: _setScreen,),
+      drawer: MainDrawer(
+        onSelectScreen: _setScreen,
+      ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
